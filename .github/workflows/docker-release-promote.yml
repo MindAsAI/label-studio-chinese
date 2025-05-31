@@ -217,7 +217,7 @@ jobs:
           docker run -v ${{ github.workspace }}:/workspace:rw -u root --rm ${{ env.IMAGE_NAME }}:${{ inputs.release_tag }} cp -r /label-studio/web/dist/ /workspace/web/
 
       - name: Create Sentry release @ backend
-        uses: getsentry/action-release@v1
+        uses: getsentry/action-release@v3
         continue-on-error: true
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -227,7 +227,7 @@ jobs:
           projects: opensource-v1-backend
 
       - name: Create Sentry release @ frontend
-        uses: getsentry/action-release@v1
+        uses: getsentry/action-release@v3
         continue-on-error: true
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
